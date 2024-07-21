@@ -1,0 +1,8 @@
+services:
+  fullstack-app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: zania-fullstack-app
+    ports:
+      - 3000:3000

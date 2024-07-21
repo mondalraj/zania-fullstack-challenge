@@ -1,0 +1,14 @@
+.card {
+  flex-basis: calc(33.333% - 10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
