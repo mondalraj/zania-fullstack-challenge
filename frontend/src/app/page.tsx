@@ -9,14 +9,17 @@ import Document from "@/types/documentType";
 import { useGetAllDocs } from "@/hooks/useGetAllDocs";
 import { useUpdateDocsOrder } from "@/hooks/useUpdateDocsOrder";
 import { formatDistanceToNow } from "date-fns";
-import { Loader } from "@mantine/core";
+import { ActionIcon, Loader, Tooltip } from "@mantine/core";
 import { useInterval } from "@mantine/hooks";
+import { IconPlus } from "@tabler/icons-react";
+import AddNewDocument from "./(components)/(Document)/AddNewDocument";
 
 export default function Home() {
   const [documents, setDocuments] = useState<Document[] | null>(null);
   const [selectedDoc, setSelectedDoc] = useState<Document | null>(null);
   const [isBrowser, setIsBrowser] = useState(false);
   const [orderUpdated, setOrderUpdated] = useState(false);
+  const [addNewDocument, setAddNewDocument] = useState(false);
 
   const updateReorderedDocs = () => {
     if (orderUpdated) {
@@ -116,6 +119,12 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <AddNewDocument
+        opened={addNewDocument}
+        setOpened={setAddNewDocument}
+        documents={documents || []}
+      />
+
       <h2 className={styles.heading}>
         Documents Center
         {allDocs?.lastUpdated && (
@@ -173,6 +182,24 @@ export default function Home() {
           />
         </div>
       )}
+      <Tooltip label="Add Document" position="left" withArrow>
+        <ActionIcon
+          style={{
+            position: "fixed",
+            bottom: 40,
+            right: 40,
+            backgroundColor: "white",
+          }}
+          variant="filled"
+          size="xl"
+          aria-label="Add Doc"
+          radius="xl"
+          color="white"
+          onClick={() => setAddNewDocument(true)}
+        >
+          <IconPlus stroke={2} size={30} color="black" />
+        </ActionIcon>
+      </Tooltip>
     </div>
   );
 }

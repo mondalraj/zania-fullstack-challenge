@@ -11,4 +11,13 @@
   font-size: 1.1rem;
   font-weight: 300;
   margin-bottom: 0.5rem;
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+
+.menuContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -3,8 +3,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import TanStackQueryWrapper from "./(components)/TanstackQueryWrapper";
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +27,10 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <TanStackQueryWrapper>
-          <MantineProvider forceColorScheme="dark">{children}</MantineProvider>
+          <MantineProvider forceColorScheme="dark">
+            <Notifications position="bottom-center" />
+            {children}
+          </MantineProvider>
         </TanStackQueryWrapper>
       </body>
     </html>
